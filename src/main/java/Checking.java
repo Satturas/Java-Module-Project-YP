@@ -1,5 +1,5 @@
 public class Checking {
-    public static boolean isNumeric(String input) {
+    public static boolean isInt(String input) {
         int intValue;
 
         if (input == null || input.isEmpty()) {
@@ -15,4 +15,31 @@ public class Checking {
         }
         return false;
     }
+
+    public static boolean isNotEmpty(String input) {
+        if (input == null || input.isEmpty()) {
+            System.out.print("Нулевая строка! ");
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isDouble(String input) {
+        double doubleValue;
+
+        if (input == null || input.isEmpty()) {
+            System.out.println("Нулевая строка! Введите числовое значение:");
+            return false;
+        }
+
+        try {
+            doubleValue = Double.parseDouble(input);
+            return true;
+        } catch (NumberFormatException e) {
+            System.out.print("Должно быть указано числовое значение! ");
+        }
+        return false;
+    }
 }
+
+
