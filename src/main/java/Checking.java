@@ -28,13 +28,19 @@ public class Checking {
         double doubleValue;
 
         if (input == null || input.isEmpty()) {
-            System.out.println("Нулевая строка! Введите числовое значение:");
+            System.out.print("Нулевая строка! ");
             return false;
         }
 
         try {
             doubleValue = Double.parseDouble(input);
-            return true;
+            String[] splitter = input.split("\\.");
+            if (splitter[1].length() != 2) {
+                System.out.print("После точки должно быть 2 цифры! ");
+                return false;
+            } else {
+                return true;
+            }
         } catch (NumberFormatException e) {
             System.out.print("Должно быть указано числовое значение! ");
         }
