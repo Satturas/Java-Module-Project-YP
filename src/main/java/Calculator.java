@@ -30,6 +30,7 @@ public class Calculator {
 
         String goodsName;
         double goodsPrice;
+        double sum = 0.00;
 
         while (true) {
             System.out.println("Укажите название товара:");
@@ -50,12 +51,15 @@ public class Calculator {
             }
             Goods product = new Goods(goodsName, goodsPrice);
             goodsMap.put(product.name, product.price);
-            break;
+            sum += product.price;
+            System.out.println("Товар успешно добавлен.");
 
+            System.out.println("Добавить еще товар? Если нет, введите 'Завершить':");
+            if (scanner.nextLine().toLowerCase().equals("завершить")) {
+                break;
+            }
 
         }
-
-
 
     }
 }
