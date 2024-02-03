@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Calculator {
@@ -52,7 +53,7 @@ public class Calculator {
             Goods product = new Goods(goodsName, goodsPrice);
             goodsMap.put(product.name, product.price);
             sum += product.price;
-            System.out.println("Товар успешно добавлен.");
+            System.out.println("Товар " + product.name + " успешно добавлен.");
 
             System.out.println("Добавить еще товар? Если нет, введите 'Завершить':");
             if (scanner.nextLine().toLowerCase().equals("завершить")) {
@@ -60,6 +61,15 @@ public class Calculator {
             }
 
         }
+
+        System.out.println("Добавленные товары:");
+        for (Map.Entry<String, Double> entry : goodsMap.entrySet()) {
+            String key = entry.getKey();
+            Double value = entry.getValue();
+            System.out.println(key + " " + value);
+        }
+        System.out.println("--------------------");
+        System.out.println("Сумма: " + sum);
 
     }
 }
