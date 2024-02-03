@@ -6,7 +6,9 @@ public class Calculator {
     public void start() {
         System.out.println("Добро пожаловать в программу 'Калькулятор счета'.");
         System.out.println("Укажите в числовом виде количество гостей, на которых необходимо разделить счет:");
+
         int numInput = 0;
+
         while (true) {
             String textInput = scanner.nextLine();
             if (Checking.isNumeric(textInput)) {
@@ -22,5 +24,7 @@ public class Calculator {
                 break;
             }
         }
+
+
     }
 }
