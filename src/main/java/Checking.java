@@ -1,6 +1,5 @@
 public class Checking {
     public static boolean isInt(String input) {
-        int intValue;
 
         if (input == null || input.isEmpty()) {
             System.out.println("Нулевая строка! Введите числовое значение:");
@@ -8,7 +7,7 @@ public class Checking {
         }
 
         try {
-            intValue = Integer.parseInt(input);
+            Integer.parseInt(input);
             return true;
         } catch (NumberFormatException e) {
             System.out.println("Должно быть указано числовое значение! Пожалуйста повторите ввод:");
@@ -25,7 +24,6 @@ public class Checking {
     }
 
     public static boolean isDouble(String input) {
-        double doubleValue;
 
         if (input == null || input.isEmpty()) {
             System.out.print("Нулевая строка! ");
@@ -33,7 +31,7 @@ public class Checking {
         }
 
         try {
-            doubleValue = Double.parseDouble(input);
+            Double.parseDouble(input);
             String[] splitter = input.split("\\.");
             if (splitter[1].length() != 2) {
                 System.out.print("После точки должно быть 2 цифры! ");
@@ -43,6 +41,9 @@ public class Checking {
             }
         } catch (NumberFormatException e) {
             System.out.print("Должно быть указано числовое значение! ");
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.print("Формат введенной стоимости не соответствует 'ХХ.ХХ'! ");
         }
         return false;
     }

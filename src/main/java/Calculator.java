@@ -48,6 +48,12 @@ public class Calculator {
                 textInput = scanner.nextLine();
                 if (Checking.isDouble(textInput)) {
                     goodsPrice = Double.parseDouble(textInput);
+                } else {
+                    continue;
+                }
+                if (goodsPrice < 0) {
+                    System.out.print("Стоимость товара не может быть меньше 0! ");
+                } else {
                     break;
                 }
             }
@@ -60,23 +66,18 @@ public class Calculator {
             if (scanner.nextLine().equalsIgnoreCase("завершить")) {
                 break;
             }
-
         }
 
         System.out.println("Добавленные товары:");
         for (Map.Entry<String, Double> entry : goodsMap.entrySet()) {
             String key = entry.getKey();
-            Double value = entry.getValue();
-            System.out.println(key + " " + value);
+            double value = entry.getValue();
+            System.out.printf(Locale.ROOT,"%s %.2f %s%n", key, value, Format.formatRubles(value));
         }
         System.out.println("--------------------");
-        System.out.println("Сумма: " + sum);
-        double result = Math.floor(sum / numGuests);
-        String rubles = "";
+        double result = sum / numGuests;
+        String rubles = Format.formatRubles(result);
         String resultOutput = String.format(Locale.ROOT,"Каждый гость должен заплатить: %.2f %s", result, rubles);
         System.out.println(resultOutput);
-
-
-
     }
 }
