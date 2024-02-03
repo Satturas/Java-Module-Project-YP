@@ -70,7 +70,6 @@ public class Calculator {
             System.out.println(key + " " + value);
         }
         System.out.println("--------------------");
-        System.out.println("Сумма: " + sum);
         double result = Math.floor(sum / numGuests);
         String rubles = "";
         String resultOutput = String.format(Locale.ROOT,"Каждый гость должен заплатить: %.2f %s", result, rubles);
