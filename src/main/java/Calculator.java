@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Calculator {
@@ -25,24 +26,31 @@ public class Calculator {
             }
         }
 
+        HashMap<String, Double> goodsMap = new HashMap<>();
+
+        String goodsName = "";
+        double goodsPrice = 0.00;
+
         while (true) {
             System.out.println("Укажите название товара:");
             String textInput = scanner.nextLine();
             if (Checking.isNotEmpty(textInput)) {
-                String goodsName = textInput;
+                goodsName = textInput;
             } else {
                 continue;
             }
+
             while (true) {
                 System.out.println("Укажите стоимость товара в формате 'ХХ.ХХ' (рубли.копейки):");
                 textInput = scanner.nextLine();
                 if (Checking.isDouble(textInput)) {
-                    Double goodsPrice = Double.parseDouble(textInput);
-                } else {
-                    continue;
+                    goodsPrice = Double.parseDouble(textInput);
+                    break;
                 }
+                Goods product = new Goods(goodsName, goodsPrice);
+                goodsMap.put(product.name, product.price);
+                break;
             }
-
 
         }
 
