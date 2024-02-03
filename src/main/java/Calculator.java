@@ -8,7 +8,7 @@ public class Calculator {
         System.out.println("Добро пожаловать в программу 'Калькулятор счета'.");
         System.out.println("Укажите в числовом виде количество гостей, на которых необходимо разделить счет:");
 
-        int numInput = 0;
+        int numInput;
 
         while (true) {
             String textInput = scanner.nextLine();
@@ -28,8 +28,8 @@ public class Calculator {
 
         HashMap<String, Double> goodsMap = new HashMap<>();
 
-        String goodsName = "";
-        double goodsPrice = 0.00;
+        String goodsName;
+        double goodsPrice;
 
         while (true) {
             System.out.println("Укажите название товара:");
@@ -47,10 +47,11 @@ public class Calculator {
                     goodsPrice = Double.parseDouble(textInput);
                     break;
                 }
-                Goods product = new Goods(goodsName, goodsPrice);
-                goodsMap.put(product.name, product.price);
-                break;
             }
+            Goods product = new Goods(goodsName, goodsPrice);
+            goodsMap.put(product.name, product.price);
+            break;
+
 
         }
 
