@@ -60,7 +60,7 @@ public class Calculator {
             Goods product = new Goods(goodsName, goodsPrice);
             goodsMap.put(product.name, product.price);
             sum += product.price;
-            System.out.println("Товар " + product.name + " успешно добавлен.");
+            System.out.println("Товар '" + product.name + "' успешно добавлен.");
 
             System.out.println("Добавить еще товар? Если нет, введите 'Завершить':");
             if (scanner.nextLine().equalsIgnoreCase("завершить")) {
