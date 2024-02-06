@@ -3,20 +3,25 @@ import java.util.Scanner;
 import java.util.Locale;
 
 public class Calculator {
-
     Scanner scanner = new Scanner(System.in);
+    int numGuests;
+    ArrayList<String> goodsNamesList = new ArrayList<>();
+    ArrayList<Double> goodsPricesList = new ArrayList<>();
+    String goodsName;
+    double goodsPrice;
+    double sum = 0.00;
+
     public void start() {
         System.out.println("Добро пожаловать в программу 'Калькулятор счета'.");
         System.out.println("Укажите в числовом виде количество гостей, на которых необходимо разделить счет:");
 
-        int numGuests;
-
         while (true) {
-            while (!scanner.hasNextInt()) {
-                System.out.println("Должно быть указано числовое значение! Пожалуйста повторите ввод:");
-                scanner.next();
+            String textInput = scanner.nextLine();
+            if (Checking.isInt(textInput)) {
+                numGuests = Integer.parseInt(textInput);
+            } else {
+                continue;
             }
-            numGuests = scanner.nextInt();
             if (numGuests == 1) {
                 System.out.println("Для одного гостя калькулятор не нужен! Пожалуйста введите число больше 1:");
             } else if (numGuests < 1) {
@@ -26,40 +31,17 @@ public class Calculator {
             }
         }
 
-
-
-        ArrayList<String> goodsNamesList = new ArrayList<>();
-        ArrayList<Double> goodsPricesList = new ArrayList<>();
-
-        String goodsName;
-        double goodsPrice;
-        double sum = 0.00;
-
         while (true) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Укажите название товара:");
-            String textInput = scanner.nextLine();
-            if (Checking.isNotEmpty(textInput)) {
-                goodsName = textInput;
-            } else {
-                continue;
-            }
-            while (true) {
-                System.out.println("Укажите стоимость товара (рубли.копейки):");
-                if (scanner.hasNextDouble()) {
-                    goodsPrice = scanner.nextDouble();
-                    if (goodsPrice < 0) {
-                        System.out.print("Стоимость товара не может быть меньше 0! ");
-                    } else {
-                        break;
-                    }
+                System.out.println("Укажите название товара:");
+                String textInput = scanner.nextLine();
+                if (Checking.isNotEmpty(textInput)) {
+                    goodsName = textInput;
                 } else {
-                    System.out.println("Должно быть указано числовое значение! Пожалуйста повторите ввод:");
+                    continue;
                 }
-            }
 
-            /*while (true) {
-                System.out.println("Укажите стоимость товара (рубли.копейки):");
+            while (true) {
+                System.out.println("Укажите стоимость товара в формате 'рубли.копейки':");
                 textInput = scanner.nextLine();
                 if (Checking.isDouble(textInput)) {
                     goodsPrice = Double.parseDouble(textInput);
@@ -71,8 +53,7 @@ public class Calculator {
                 } else {
                     break;
                 }
-            }*/
-
+            }
 
             Goods product = new Goods(goodsName, goodsPrice);
             goodsNamesList.add(product.name);
