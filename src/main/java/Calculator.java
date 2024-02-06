@@ -78,5 +78,4 @@ public class Calculator {
         String resultOutput = String.format(Locale.ROOT,"Каждый гость должен заплатить: %.2f %s", result, rubles);
         System.out.println(resultOutput);
     }
-
 }

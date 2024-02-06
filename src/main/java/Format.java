@@ -1,9 +1,10 @@
 public class Format {
     public static String formatRubles(double rubles) {
-        int intRubles = (int) Math.floor(rubles) % 10;
-        if (intRubles == 1 && (rubles % 100 < 11 || rubles % 100 > 19)) {
+        int intRubles10 = (int) Math.floor(rubles) % 10;
+        int intRubles100 = (int) Math.floor(rubles) % 100;
+        if (intRubles10 == 1 && (intRubles100 < 11 || intRubles100 > 19)) {
             return "рубль";
-        } else if (intRubles >= 2 && intRubles <= 4 && (rubles % 100 < 11 || rubles % 100 > 19)) {
+        } else if (intRubles10 >= 2 && intRubles10 <= 4 && (intRubles100 < 11 || intRubles100 > 19)) {
             return "рубля";
         } else {
             return "рублей";
