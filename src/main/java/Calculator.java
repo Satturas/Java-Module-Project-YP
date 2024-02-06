@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Locale;
@@ -28,7 +30,8 @@ public class Calculator {
             }
         }
 
-        HashMap<String, Double> goodsMap = new HashMap<>();
+        ArrayList<String> goodsNamesList = new ArrayList<>();
+        ArrayList<Double> goodsPricesList = new ArrayList<>();
 
         String goodsName;
         double goodsPrice;
@@ -58,7 +61,8 @@ public class Calculator {
                 }
             }
             Goods product = new Goods(goodsName, goodsPrice);
-            goodsMap.put(product.name, product.price);
+            goodsNamesList.add(product.name);
+            goodsPricesList.add(product.price);
             sum += product.price;
             System.out.println("Товар '" + product.name + "' успешно добавлен.");
 
@@ -69,11 +73,10 @@ public class Calculator {
         }
 
         System.out.println("Добавленные товары:");
-        for (Map.Entry<String, Double> entry : goodsMap.entrySet()) {
-            String key = entry.getKey();
-            double value = entry.getValue();
-            System.out.printf(Locale.ROOT,"%s %.2f %s%n", key, value, Format.formatRubles(value));
+        for (int i = 0; i < goodsNamesList.size(); i++) {
+            System.out.printf(Locale.ROOT, "%s %.2f %s%n", goodsNamesList.get(i), goodsPricesList.get(i), Format.formatRubles(goodsPricesList.get(i)));
         }
+
         System.out.println("--------------------");
         double result = sum / numGuests;
         String rubles = Format.formatRubles(result);
