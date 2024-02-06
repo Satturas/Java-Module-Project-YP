@@ -44,7 +44,7 @@ public class Calculator {
             }
 
             while (true) {
-                System.out.println("Укажите стоимость товара в формате 'ХХ.ХХ' (рубли.копейки):");
+                System.out.println("Укажите стоимость товара (рубли.копейки):");
                 textInput = scanner.nextLine();
                 if (Checking.isDouble(textInput)) {
                     goodsPrice = Double.parseDouble(textInput);

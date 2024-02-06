@@ -32,10 +32,14 @@ public class Checking {
 
         try {
             Double.parseDouble(input);
-            String[] splitter = input.split("\\.");
-            if (splitter[1].length() != 2) {
-                System.out.print("После точки должно быть 2 цифры! ");
-                return false;
+            if (input.indexOf('.') != -1) {
+                String[] splitter = input.split("\\.");
+                if (splitter[1].length() > 2) {
+                    System.out.print("Количество копеек не может быть больше 100! ");
+                    return false;
+                } else {
+                    return true;
+                }
             } else {
                 return true;
             }
@@ -43,7 +47,7 @@ public class Checking {
             System.out.print("Должно быть указано числовое значение! ");
         }
         catch (ArrayIndexOutOfBoundsException e) {
-            System.out.print("Формат введенной стоимости не соответствует 'ХХ.ХХ'! ");
+            System.out.print("Формат введенной стоимости не соответствует 'рубли.копейки'! ");
         }
         return false;
     }
